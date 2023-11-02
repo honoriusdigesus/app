@@ -11,16 +11,12 @@ import java.time.Month;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
 public class CrudApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrudApplication.class, args);
 	}
 
-	@GetMapping(path = "/")
-	public List<Product> getNames() {
-		return List.of(new Product(1001,"Mil horas de estudio",1000, LocalDate.of(2023, Month.NOVEMBER,1),1));
-	}
+
 
 }
