@@ -26,4 +26,9 @@ public class ProductController {
         return productService.addProducto(product);
     }
 
+    @PutMapping
+    public ResponseEntity<Object> updateProduct(@RequestBody Product product) {
+        return productService.updateProducto(product);
+    }
+
 }
