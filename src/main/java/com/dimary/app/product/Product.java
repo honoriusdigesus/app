@@ -1,8 +1,15 @@
 package com.dimary.app.product;
 
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private float price;
