@@ -1,9 +1,12 @@
 package com.dimary.app.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +23,15 @@ public class ProductService {
         return this.productRepository.findAll();
     }
 
-    public void addProducto(@RequestBody Product product) {
+    public ResponseEntity<Object> addProducto(@RequestBody Product product) {
         Optional<Product> res = productRepository.findProductByName(product.getName());
+        HashMap<String, Object> datos = new HashMap<>();
         if (res.isPresent()) {
-            throw new IllegalStateException("El producto ya existe");
-        } else {
-            productRepository.save(product);
+            datos.put("ERROR", "No se puede almacenar el producto");
+            return new ResponseEntity<>(datos ,HttpStatus.CONFLICT);
         }
+        productRepository.save(product);
+        datos.put("SAVED", "Producto almacenado correctamente");
+        return new ResponseEntity<>(datos, HttpStatus.CREATED);
     }
 }

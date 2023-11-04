@@ -1,6 +1,7 @@
 package com.dimary.app.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public void addProduct(@RequestBody Product product) {
-        productService.addProducto(product);
+    public ResponseEntity<Object> addProduct(@RequestBody Product product) {
+        return productService.addProducto(product);
     }
 
 }
