@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private float price;
     private LocalDate fecha;
@@ -19,7 +19,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(long id, String name, float price, LocalDate fecha, int antiguedad) {
+    public Product(Long id, String name, float price, LocalDate fecha, int antiguedad) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -34,11 +34,11 @@ public class Product {
         this.antiguedad = antiguedad;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

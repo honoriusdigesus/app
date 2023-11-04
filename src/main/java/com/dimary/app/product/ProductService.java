@@ -1,5 +1,6 @@
 package com.dimary.app.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -8,7 +9,14 @@ import java.util.List;
 
 @Service
 public class ProductService {
+    private final ProductRepository productRepository;
+
+    @Autowired
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     public List<Product> getNames() {
-        return List.of(new Product(1001,"Mil y una hora de estudio",1000, LocalDate.of(2023, Month.NOVEMBER,1),1));
+        return this.productRepository.findAll();
     }
 }
